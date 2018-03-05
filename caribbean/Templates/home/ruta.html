@@ -1,0 +1,85 @@
+{% extends 'base1.html' %}
+
+
+
+
+{% block content %}
+<div class="container">
+
+  <div class="row">
+  			<div class="categoria col-sm-6" >
+  			<img class="img-rounded categoria " src="{{MEDIA_URL}}/{{datos.ruta.imagen}}"  >
+        </div>
+        <div class="col-sm-4">
+        {{datos.ruta.descriptcion}} <br>
+        Visitas: {{datos.ruta.destinos}}
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="boleto_basico col-sm-4">
+      <br>
+      <h1>{{datos.boleto_basico.Nombreb}}</h1><br>
+      {{datos.boleto_basico.descriptcion}}<br>
+      Precio:{{datos.boleto_basico.precio}}<br>
+      <a class="btn btn-success btn-lg" href="/agregarbasico/{{datos.boleto_basico.id}}/{{datos.boleto_basico.ruta.id}}" onclick="compra({{datos.boleto_basico.id}},{{request}},{{datos.boleto_basico.ruta}})" id="customButtton"><span class="glyphicon glyphicon-credit-card"></span> Comprar boleto</a>
+
+    </div>
+    <div class="boleto_oro col-sm-4">
+      <br>
+      <h1>{{datos.boleto_oro.Nombreb}}</h1><br>
+      {{datos.boleto_oro.descriptcion}}<br>
+      Precio:{{datos.boleto_oro.precio}}<br>
+      <a class="btn btn-success btn-lg" href="/agregaroro/{{datos.boleto_oro.id}}/{{datos.boleto_oro.ruta.id}}" onclick="compra({{datos.boleto_basico.id}},{{request}},{{datos.boleto_basico.ruta}})" id="customButtton"><span class="glyphicon glyphicon-credit-card"></span> Comprar boleto</a>
+
+    </div>
+    <div class="boleto_vip col-sm-4">
+      <br>
+      <h1>{{datos.boleto_vip.NOmbreb}}</h1><br>
+      {{datos.boleto_vip.descriptcion}}<br>
+      Precio:{{datos.boleto_vip.precio}}<br>
+      <a class="btn btn-success btn-lg" href="/agregarvip/{{datos.boleto_vip.id}}/{{datos.boleto_vip.ruta.id}}" onclick="compra({{datos.boleto_basico.id}},{{request}},{{datos.boleto_basico.ruta}})" id="customButtton"><span class="glyphicon glyphicon-credit-card"></span> Comprar boleto</a>
+
+    </div>
+  </div>
+
+<br>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+    <h1>Tickets</h1>
+</div>
+
+<div class="panel-body">
+<div class="actividades col-sm-6">
+{% for i in datos.ticket_actividad %}
+<div>
+    <h3>{{i.Nombreta}}</h1><br>
+    {{i.descriptcion}}<br>
+    {{i.dias}}<br>
+    {{i.horarios}}<br>
+      {{i.precio}}
+      <br>
+<a class="btn btn-success btn-lg" href="/agregarticketa/{{i.id}}/{{i.ruta.id}}" onclick="compra({{datos.ticket_actividad.id}},{{request}},{{datos.ticket_actividad.ruta}})" id="customButtton"><span class="glyphicon glyphicon-credit-card"></span> Comprar ticket</a>
+
+</div>
+{% endfor %}
+</div>
+
+
+<div class="col-sm-6">
+{% for i in datos.ticket_restaurante %}
+<div>
+    <h3>{{i.Nombretr}}</h1><br>
+    {{i.descriptcion}}<br>
+    {{i.restaurante}}<br>
+      {{i.precio}}
+      <br>
+<a class="btn btn-success btn-lg" href="/agregarticketr/{{i.id}}/{{i.ruta.id}}" onclick="compra({{datos.ticket_actividad.id}},{{request}},{{datos.ticket_actividad.ruta}})" id="customButtton"><span class="glyphicon glyphicon-credit-card"></span> Comprar ticket</a>
+
+</div>
+{% endfor %}
+
+</div>
+</div>
+{% endblock %}

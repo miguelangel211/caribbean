@@ -1,0 +1,17 @@
+{% extends 'base1.html' %}
+
+
+
+
+{% block content %}
+
+
+			{% for p in categoria%}
+			<div class="categoria" >
+			<a style="color:white" href="/ruta/{{p.id}}"><img class="img-rounded categoria" src="{{MEDIA_URL}}/{{p.imagen}}" width="600" height="400" >
+			<div  style="background: rgba(54,25,25,.5);" class="centered"><h1>{{p.Nombre}}</h1></div></a>
+			</div>
+
+
+			{% endfor %}
+{% endblock %}

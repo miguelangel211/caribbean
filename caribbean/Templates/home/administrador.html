@@ -1,0 +1,51 @@
+{% extends 'base1.html' %}
+
+
+
+
+{% block content %}
+
+<div class="col-md-4">
+    <h1>subscripcion activa</h1>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Correo</th>
+            <th>Nombre</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for i in subscriptores %}
+<tr>
+<th>{{i.email}}</th>   <th>{{i.Nombre}}</th>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+<div class="col-md-6">
+    <h1>Ventas</h1>
+    total acumulado: {{total}}
+    <table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>RFC</th>
+            <th>Total</th>
+            <th>fecha</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in compras %}
+    <tr>
+   <th>{{i.Nombre}}</th><th>{{i.rfc}}</th><th>{{i.total}}</th><th>{{i.timestamp}}</th>
+   <th>
+   </th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+{% endblock %}
